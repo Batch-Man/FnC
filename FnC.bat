@@ -27,7 +27,7 @@ REM For More Visit: www.batch-man.com
 
 
 REM Setting version information...
-Set _ver= 1.0
+Set _ver=20211022
 
 REM Checking for various parameters of the function...
 If /i "%~1" == "/?" (goto :help)
@@ -48,7 +48,7 @@ For %%A in (
 	"@Echo off"
 	"Setlocal EnableDelayedExpansion"
 	""
-	"Set _path^=%%SystemDrive%%\system\%_Name%"
+	"Set _path^=%%Appdata%%\%_Name%"
 	"Set path=%%path%%;%%_path%%;%%cd%%;%%cd%%\Files;"
 	"Cd Files ^>nul 2^>nul"
 	"If Not exist ^"%%_path%%^" ^(Md ^"%%_path%%^"^)"
