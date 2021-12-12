@@ -1,6 +1,8 @@
 # FnC Function
 **Description:**
-This program can generate a skeleton for you to start your projects easy!
+This program can generate a skeleton for you to start your projects easy! This will generate the Folder structure of the project and you will find the generated file in the ProjectName\Src\ Folder.
+
+It also generates basic README.md and CHANGELOG.md for easily intigrate the projects on github.
 
 AUTHOR:	Kvc
 

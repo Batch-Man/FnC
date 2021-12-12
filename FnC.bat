@@ -27,7 +27,7 @@ REM For More Visit: www.batch-man.com
 
 
 REM Setting version information...
-Set _ver=20211022
+Set _ver=20211212
 
 REM Checking for various parameters of the function...
 If /i "%~1" == "/?" (goto :help)
@@ -42,6 +42,16 @@ Set "_Name=%~1"
 
 REM Starting Main Program...
 :Main
+IF NOT EXIST "%CD%\%_Name%" (
+	REM Create a Folder Structure as well...
+	MD "%CD%\%_Name%"
+	MD "%CD%\%_Name%\bin"
+	MD "%CD%\%_Name%\Src"
+	MD "%CD%\%_Name%\Src\Files"
+	echo.>"%CD%\%_Name%\README.md"
+	echo.>"%CD%\%_Name%\CHANGELOG.md"
+)
+Pushd "%CD%\%_Name%\Src" >nul 2>nul
 If Exist "%_Name%.bat" (Echo. File Already Exists! Can't Overwrite!&&Goto :End)
 
 For %%A in (
@@ -62,11 +72,19 @@ For %%A in (
 	"REM OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER"
 	"REM DEALINGS IN THE SOFTWARE."
 	""
-	"REM This program is free software: you can redistribute it and/or modify"
-    "REM it under the terms of the GNU General Public License as published by"
-    "REM the Free Software Foundation, either version 3 of the License, or"
-    "REM (at your option) any later version. "
-    "REM see www.gnu.org/licenses"
+	"REM This program is distributed under the following license: (SELECT A LICENSE)"
+    ""
+    "REM ================================================================================"
+    "REM Apache License 2.0 - https://opensource.org/licenses/Apache-2.0"
+	"REM BSD 3-Clause 'New' or 'Revised' license - https://opensource.org/licenses/BSD-3-Clause"
+	"REM BSD 2-Clause 'Simplified' or 'FreeBSD' license - https://opensource.org/licenses/BSD-2-Clause"
+	"REM GNU General Public License (GPL) - https://opensource.org/licenses/gpl-license"
+	"REM GNU Library or 'Lesser' General Public License (LGPL) - https://opensource.org/licenses/lgpl-license"
+	"REM MIT license - https://opensource.org/licenses/MIT"
+	"REM Mozilla Public License 2.0 - https://opensource.org/licenses/MPL-2.0"
+	"REM Common Development and Distribution License - https://opensource.org/licenses/CDDL-1.0"
+	"REM Eclipse Public License version 2.0 - https://opensource.org/licenses/EPL-2.0"
+    "REM ================================================================================"
     ""
     ""
     "REM ================= ABOUT THE PROGRAM ================="
@@ -176,10 +194,72 @@ For %%A in (
 	if Defined _Line (Set "_Line=!_Line:\/\=?!")
 	Echo.!_Line!>>"!_Name!.bat"
 	)
-Echo. Generated "!_Name!.bat" ...
+Echo. Generated "..\%_Name%\Src\!_Name!.bat" ...
+Popd
+Pushd "%CD%\%_FileName%"
+Echo. Generating README.md File...
+
+For %%A in (
+	"# ___________ Function"
+	"**Description:**"
+	"This program can ___________________________________________________"
+	""
+	"AUTHOR: _____________"
+	""
+	"# USAGE"
+	"^<code^>Call ________________ [Syntax of Function] </code^>"
+	""
+	"Where:-"
+	""
+	"			ver			: 	Displays version of program"
+	"			help			: 	Displays help for the program"
+	"			_________			: 	___________________________________________________"
+	""
+	"Example: 		Call ________ ____________"  
+	"Example: 		Call ________ ____________"  
+	""
+	""
+	""
+	"www.batch-man.com"
+	"#batch-man"
+	) do (
+	REM Fixing a Bug with Generation of '?' symbol in files via script...
+	Set "_Line=%%~A"
+	if Defined _Line (Set "_Line=!_Line:\/\=?!")
+	Echo.!_Line!>>"README.md"
+	)
+Echo. Generated "..\%_Name%\README.md" ...
+Echo. Generating CHANGELOG.md File...
+
+For %%A in (
+	"# ___________ Function"
+	"## _____ VER"
+	"1. "
+	"2. "
+	""
+	""
+	"## _____ VER"
+	"1. "
+	"2. "
+	""
+	""
+	"## _____ VER"
+	"1. "
+	"2. "
+	""
+	""
+	) do (
+	REM Fixing a Bug with Generation of '?' symbol in files via script...
+	Set "_Line=%%~A"
+	if Defined _Line (Set "_Line=!_Line:\/\=?!")
+	Echo.!_Line!>>"CHANGELOG.md"
+	)
+Echo. Generated "..\%_Name%\CHANGELOG.md" ...
+
 Goto :End
 
 :End
+Popd
 Goto :EOF
 
 :Help
