@@ -1,8 +1,8 @@
 # FnC Function
 **Description:**
-This program can generate a skeleton for you to start your projects easy! This will generate the Folder structure of the project and you will find the generated file in the ProjectName\Src\ Folder.
+This program can generate a skeleton for you to start your projects easy! This will generate the folder structure of the project and you will find the generated file in the ProjectName\src\ folder.
 
-It also generates basic README.md and CHANGELOG.md for easily intigrate the projects on github.
+It also generates basic README.md and CHANGELOG.md for easily intigrate the projects on GitHub.
 
 AUTHOR:	Kvc
 
@@ -15,7 +15,7 @@ Where:-
  			ver			: 	Displays version of program
  			help			: 	Displays help for the program
  			Name			: 	Name of the file to generate [program will add .bat extension]
- 			Author		: Author of the Project
+ 			Author	: Author of the project
 
  Example: 		Call FnC FnC Kvc 
  Example: 		Call FnC Table-Function  Kvc 
