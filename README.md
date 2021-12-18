@@ -25,24 +25,3 @@ Now, you can start working on your projects quickly and with less hassle.
 
  www.batch-man.com
  #batch-man
-# Test
-## Description
-This program can ___________________________________________________
-
-Author: abc
-
-## Usage
-Call Test [syntax]
-
-Where:
-
-- `ver`		: 	Displays version of program
-- `help`		: 	Displays help for the program
-- `_________`	: 	___________________________________________________
-
-Example: 
-`call Test ____________`
-
-
-
-Echo. www.batch-man.com
