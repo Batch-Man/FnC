@@ -11,21 +11,3 @@
 ## v20211218 - Thank you anic17 for help
 1. Added support for dynamically generating AuthorName, as one of the parameters.
 2. Improved the Help menu syntax with single line of code.
-
-# Test Function
-## v1.0
-1. 
-2. 
-
-
-## v2.0
-1. 
-2. 
-
-
-## v3.0
-1. 
-2. 
-
-
-Echo. www.batch-man.com
