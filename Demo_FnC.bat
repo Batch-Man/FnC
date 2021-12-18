@@ -8,10 +8,11 @@ for /f %%a in ('copy /Z "%~dpf0" nul') do set "BS=%%a"
 
 :Main
 Set /P "_FileName=Type FileName to Generate:"
+Set /P "_Author=Author of Project:"
 If Not Defined _FileName (Goto :Main)
 Echo. Creating File...
 Echo. The Process of File Generation might be Slow in Win 10, Because of Defender.
-Start /b Call FnC "%_FileName%"
+Start /b Call FnC "%_FileName%" "%_Author%"
 Timeout /t 1
 Pushd "%CD%\%_FileName%\Src\"
 
