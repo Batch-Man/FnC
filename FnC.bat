@@ -21,23 +21,23 @@ REM see www.gnu.org/licenses
 
 
 REM ================= ABOUT THE PROGRAM =================
-REM This program is Created by Kvc at 'Mon 11/02/2020 - 19:04'
+REM This program is Created by Kvc at 'Mon 11/02/2020 - 19:04', and
+REM improved at 12/18/2021
 REM This program can Generate a Skeleton for you to start your projects easy!
 REM For More Visit: www.batch-man.com
 
 
 REM Setting version information...
-Set _ver=20211212
+Set _ver=20211218
 
 REM Checking for various parameters of the function...
-If /i "%~1" == "/?" (goto :help)
-If /i "%~1" == "-h" (goto :help)
-If /i "%~1" == "-help" (goto :help)
-If /i "%~1" == "help" (goto :help)
+for %%A in ("/?" "-h" "-help" "--help" "help" "") do (if /i "%~1"=="%%~A" (goto :help))
 If /i "%~1" == "ver" (Echo.%_ver%&Goto :End)
-If /i "%~1" == "" (goto :help)
+
 
 REM Saving parameters to variables...
+if /i "%~2" neq "" (set "_Author=%~2") else (set "_Author=[AUTHOR]")
+
 Set "_Name=%~1"
 
 REM Starting Main Program...
@@ -88,21 +88,18 @@ For %%A in (
     ""
     ""
     "REM ================= ABOUT THE PROGRAM ================="
-    "REM This program is Created by _________________ at '!date! - !time:~0,-6!'"
+    "REM This program is created by !_Author! at '!date! - !time:~0,-6!'"
     "REM This program can _______________________________________________________"
     "REM Use '/?' for getting help for This."
     "REM For More Visit: www.batch-man.com"
     ""
     ""
     "REM Setting version information..."
-    "Set _ver^= _._"
+    "Set _ver^=_._"
     ""
     ""
     "REM Checking for various parameters of the function..."
-    "If /i ^"%%~1^" ^=^= ^"/\/\^" ^(goto :help^)"
-    "If /i ^"%%~1^" ^=^= ^"-h^" ^(goto :help^)"
-    "If /i ^"%%~1^" ^=^= ^"-help^" ^(goto :help^)"
-    "If /i ^"%%~1^" ^=^= ^"help^" ^(goto :help^)"
+	"for %%%%A in ^(^"/\/\^" ^"--help^" ^"-h^" ^"-\/\^" ^"-help^"^) do ^(if /i ^"%%%%A^" ^=^= ^"%%~1^" ^(goto :help^)^)"
     "If /i ^"%%~1^" ^=^= ^"ver^" ^(Echo.%%_ver%%^&Goto :End^)"
     "If /i ^"%%~1^" ^=^= ^"^" ^(goto :help^)"
     ""
@@ -149,9 +146,9 @@ For %%A in (
 	"Echo."
 	"Echo. This function will _______________________________________________________"
 	"echo. It will help in __________________________________________________________"
-	"Echo. CREDITS: !_Name! %%_ver%% by _________________"
+	"Echo. CREDITS: !_Name! %%_ver%% by !_Author!"
 	"echo."
-	"echo. Syntax: Call !_Name! [] [] [] [] [] [] [] [] []"
+	"echo. Syntax: call !_Name! [] [] [] [] [] [] [] [] []"
 	"echo. Syntax: call !_Name! [help , /\/\ , -h , -help]"
 	"echo. Syntax: call !_Name! ver"
 	"echo."
@@ -176,10 +173,7 @@ For %%A in (
 	"Echo. Now, you can __________________________________________________________"
 	"Echo. _________________."
 	"Echo."
-	"Echo. PLUGIN REQUIRED FOR THIS PROJECT..."
-	"Echo. _________________"
-	"Echo. _________________"
-	"Echo. _________________"
+	"Echo. PLUGINS REQUIRED FOR THIS PROJECT:"
 	"Echo. _________________"
 	"Echo. _________________"
 	"Echo."
@@ -196,32 +190,31 @@ For %%A in (
 	)
 Echo. Generated "..\%_Name%\Src\!_Name!.bat" ...
 Popd
-Pushd "%CD%\%_FileName%"
+Pushd "%CD%\%_Name%"
 Echo. Generating README.md File...
 
 For %%A in (
-	"# ___________ Function"
-	"**Description:**"
+	"# !_Name!"
+	"## Description"
 	"This program can ___________________________________________________"
 	""
-	"AUTHOR: _____________"
+	"Author: !_Author!"
 	""
-	"# USAGE"
-	"^<code^>Call ________________ [Syntax of Function] </code^>"
+	"## Usage"
+	"Call !_Name! [syntax]"
 	""
-	"Where:-"
+	"Where:"
 	""
-	"			ver			: 	Displays version of program"
-	"			help			: 	Displays help for the program"
-	"			_________			: 	___________________________________________________"
+	"- `ver`		: 	Displays version of program"
+	"- `help`		: 	Displays help for the program"
+	"- `_________`	: 	___________________________________________________"
 	""
-	"Example: 		Call ________ ____________"  
-	"Example: 		Call ________ ____________"  
+	"Example: "
+	"`call !_Name! ____________`"  
 	""
 	""
 	""
 	"www.batch-man.com"
-	"#batch-man"
 	) do (
 	REM Fixing a Bug with Generation of '?' symbol in files via script...
 	Set "_Line=%%~A"
@@ -232,22 +225,23 @@ Echo. Generated "..\%_Name%\README.md" ...
 Echo. Generating CHANGELOG.md File...
 
 For %%A in (
-	"# ___________ Function"
-	"## _____ VER"
+	"# !_Name! Function"
+	"## v1.0"
 	"1. "
 	"2. "
 	""
 	""
-	"## _____ VER"
+	"## v2.0"
 	"1. "
 	"2. "
 	""
 	""
-	"## _____ VER"
+	"## v3.0"
 	"1. "
 	"2. "
 	""
 	""
+	"www.batch-man.com"
 	) do (
 	REM Fixing a Bug with Generation of '?' symbol in files via script...
 	Set "_Line=%%~A"
@@ -264,12 +258,12 @@ Goto :EOF
 
 :Help
 Echo.
-Echo. This function will Generate the backbone Batch code structure of the new 
-Echo. function in a File (in the same Folder).
-echo. It will help you in quickly Starting with your projects, without too much
+Echo. This function will generate the backbone batch code structure of the new 
+Echo. function in a file (in the same folder).
+echo. It will help you in quickly starting with your projects, without too much
 Echo. thoughts about the basic - repeating things.
 echo.
-echo. Syntax: Call FnC [Name]
+echo. Syntax: call FnC ^<Name^> [Author]
 echo. Syntax: call FnC [help , /? , -h , -help]
 echo. Syntax: call FnC ver
 echo.
@@ -277,15 +271,16 @@ echo. Where:-
 echo.
 echo. ver		: Displays version of program
 echo. help		: Displays help for the program
-echo. Name		: Name of the File to Generate [Program will add .bat extension]
+echo. Name		: Name of the file to generate ^(Program will add .bat extension^)
+echo. Author	: Author of the file to generate (optional)
 Echo.
-Echo. Example: Call FnC FnC
-Echo. Example: Call FnC Table-Function
-Echo. Example: Call FnC ver
-Echo. Example: Call FnC [/? , -h , -help , help]
+Echo. Example: call FnC FnC
+Echo. Example: call FnC Table-Function
+Echo. Example: call FnC ver
+Echo. Example: call FnC [/? , -h , -help , help]
 Echo.
 Echo. Now, you can start working on your projects quickly and with less hassle.
-Echo. So, Jump Start your awesome scripts.
+Echo. So, jump start your awesome scripts.
 Echo.
 Echo. www.batch-man.com
 Echo. #batch-man

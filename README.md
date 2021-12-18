@@ -8,19 +8,41 @@ AUTHOR:	Kvc
 
 # USAGE
 
-<code>Call FnC [Name | help , /? , -h , -help | ver]</code>
+<code>Call FnC [Name | help , /? , -h , -help | ver] [Author]</code>
 
 Where:-
 
  			ver			: 	Displays version of program
  			help			: 	Displays help for the program
  			Name			: 	Name of the file to generate [program will add .bat extension]
+ 			Author		: Author of the Project
 
- Example: 		Call FnC FnC  
- Example: 		Call FnC Table-Function  
+ Example: 		Call FnC FnC Kvc 
+ Example: 		Call FnC Table-Function  Kvc 
 
 Now, you can start working on your projects quickly and with less hassle.
  So, jump start your awesome scripts.
 
  www.batch-man.com
  #batch-man
+# Test
+## Description
+This program can ___________________________________________________
+
+Author: abc
+
+## Usage
+Call Test [syntax]
+
+Where:
+
+- `ver`		: 	Displays version of program
+- `help`		: 	Displays help for the program
+- `_________`	: 	___________________________________________________
+
+Example: 
+`call Test ____________`
+
+
+
+Echo. www.batch-man.com
