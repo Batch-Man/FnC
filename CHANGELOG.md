@@ -11,3 +11,10 @@
 ## v20211218 - Thank you anic17 for help
 1. Added support for dynamically generating AuthorName, as one of the parameters.
 2. Improved the Help menu syntax with single line of code.
+
+## v20211222
+1. Changed the Default path from APPDATA to LocalAppData
+2. Made it easier to Add support for new languages for the developer (Currently - only Bat is supported)
+3. The user can easily handle the template of the files to generate/Folder Structure.
+4. Added support for choosing AuthorName while generating Template.
+5. Added support for choosing the project location

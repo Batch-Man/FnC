@@ -1,0 +1,6 @@
+MD "%_Project_Location%\%_Name%"
+MD "%_Project_Location%\%_Name%\bin"
+MD "%_Project_Location%\%_Name%\Src"
+MD "%_Project_Location%\%_Name%\Src\Files"
+echo.>"%_Project_Location%\%_Name%\README.md"
+echo.>"%_Project_Location%\%_Name%\CHANGELOG.md"

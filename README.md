@@ -8,17 +8,19 @@ AUTHOR:	Kvc
 
 # USAGE
 
-<code>Call FnC [Name | help , /? , -h , -help | ver] [Author]</code>
+<code>Call FnC [Name | help , /? , -h , -help | ver]  [Language] [Author] [ProjectLocation]</code>
 
 Where:-
 
  			ver			: 	Displays version of program
  			help			: 	Displays help for the program
  			Name			: 	Name of the file to generate [program will add .bat extension]
- 			Author	: Author of the project
+ 			Language	: Bat, Py, C, Ahk ^(One of these Coding Languages^) 
+			Author		: Author of the file to generate ^(optional^)
+			ProjectLocation : Location of the Project ^(optional^) 
 
- Example: 		Call FnC FnC Kvc 
- Example: 		Call FnC Table-Function  Kvc 
+ Example: 		call FnC FnC Bat Kvc "D:\Projects\FnC" 
+ Example: 		call FnC Table-Function C anic17 "D:\Projects\Table-Function" 
 
 Now, you can start working on your projects quickly and with less hassle.
  So, jump start your awesome scripts.
