@@ -25,4 +25,5 @@ Where:
 Now, you can start working on your projects quickly and with less hassle.  
 So, jump start your awesome scripts.
 
-[#batch-man](https://batch-man.com)
+[#batch-man]
+Article- https://batch-man.com/batch-template-generator-fnc/
