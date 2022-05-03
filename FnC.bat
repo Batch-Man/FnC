@@ -21,16 +21,20 @@ REM see www.gnu.org/licenses
 
 
 REM ================= ABOUT THE PROGRAM =================
-REM This program was created by Kvc at 'Mon 11/02/2020 - 19:04'
-REM This program can generate a skeleton for you to start your projects easy!
-REM For More, Visit: www.batch-man.com
+REM This program is Created by Kvc at 'Mon 11/02/2020 - 19:04'
+REM This program can Generate a Skeleton for you to start your projects easy!
+REM For More Visit: www.batch-man.com
 
 
 REM Setting version information...
-Set _ver=20211222
+Set _ver=20220129
 
-REM Checking for various parameters sent to the function...
-for %%A in ("/?" "-h" "-help" "--help" "help" "") do (if /i "%~1"=="%%~A" (goto :help))
+REM Checking for various parameters of the function...
+If /i "%~1" == "/?" (Goto :Help)
+If /i "%~1" == "" (Goto :Help)
+If /i "%~2" == "" (Goto :Help)
+
+for %%A in ("-h" "-help" "--help" "help") do (if /i "%~1"=="%%~A" (goto :help))
 If /i "%~1" == "ver" (Echo.%_ver%&Goto :End)
 
 REM Saving parameters to variables...
@@ -48,20 +52,13 @@ Set _FnC_Location=%_FnC_Location:~0,-1%
 if /i "!_Author!" == "" (set "_Author=[AUTHOR]")
 if /i "!_Project_Location!" == "" (set "_Project_Location=%_FnC_Location%")
 
-Set _Valid=0
-REM Temporary line to tell user about the supported languages...
-IF /i "!_Lang!" NEQ "Bat" (Echo. NOT SUPPORTED YET!&&Goto :End)
-For %%A in ("Bat" "C" "Py" "ahk") do (
-	If /i "%%~A" == "!_Lang!" (
-		Set _Valid=1
-		IF NOT EXIST "!_Project_Location!\!_Name!" (
-			REM Create a Folder Structure as well...
-			Call "!_FnC_Location!\Files\!_Lang!\FolderStructure.bat"
-		)
-		Call "!_FnC_Location!\Files\Generate%%~AProject.bat"
-		)
-	)
-If %_Valid% == 0 (Echo."Invalid Language!")
+If NOT Exist "%_FnC_Location%\Files\%_Lang%" (Echo.Language not supported! Try 'FnC /?'&&Goto :End)
+
+IF NOT EXIST "!_Project_Location!\!_Name!" (
+	REM Create a Folder Structure as well...
+	Call "!_FnC_Location!\Files\!_Lang!\FolderStructure.bat"
+)
+Call "!_FnC_Location!\Files\Generate!_Lang!Project.bat"
 Goto :End
 
 :End
@@ -71,7 +68,7 @@ Goto :EOF
 Echo.
 Echo. This function will generate the backbone batch code structure of the new 
 Echo. function in a file ^(in the same folder^). - aka Template.
-echo. It will help you to quickly start with your projects, without too much
+echo. It will help you in quickly starting with your projects, without too much
 Echo. thoughts about the basic - repeating things.
 echo.
 echo. Syntax: call FnC ^<Name^> ^<Language^> [Author] [ProjectLocation]
@@ -80,12 +77,12 @@ echo. Syntax: call FnC ver
 echo.
 echo. Where:-
 echo.
-echo. ver		: Displays the version of program
-echo. help		: Displays the help for the program
+echo. ver		: Displays version of program
+echo. help		: Displays help for the program
 echo. Name		: Name of the file to generate ^(Program will add .bat extension^)
-echo. Language	: Bat, Py, C, Ahk ^(One of these Coding Languages^) 
+echo. Language	: Bat, C ^(One of these Coding Languages^) 
 echo. Author		: Author of the file to generate ^(optional^)
-echo. ProjectLocation : Location of the project ^(optional^) 
+echo. ProjectLocation : Location of the Project ^(optional^) 
 Echo.
 Echo. Example: call FnC FnC Bat Kvc "D:\Projects\FnC"
 Echo. Example: call FnC Table-Function C anic17 "D:\Projects\Table-Function"

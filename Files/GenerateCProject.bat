@@ -1,0 +1,26 @@
+Pushd "%_Project_Location%\%_Name%\Src" >nul 2>nul
+If Exist "%_Name%.C" (Echo. File Already Exists! Can't Overwrite!&&Goto :EOF)
+
+REM Generating the Main Project File...
+Call "%_FnC_Location%\Files\%_Lang%\Project.bat"
+Echo. Generated "..\%_Name%\Src\!_Name!.C" ...
+Echo.
+Popd
+
+
+Pushd "%_Project_Location%\%_Name%"
+Echo. Generating README.md File...
+
+REM Generating the README.md File...
+Call "%_FnC_Location%\Files\%_Lang%\README.bat"
+Echo. Generated "..\%_Name%\README.md" ...
+Echo.
+
+Echo. Generating CHANGELOG.md File...
+
+REM Generating the CHANGELOG.md File...
+Call "%_FnC_Location%\Files\%_Lang%\CHANGELOG.bat"
+Echo. Generated "..\%_Name%\CHANGELOG.md" ...
+Echo.
+
+Popd

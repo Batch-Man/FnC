@@ -8,11 +8,12 @@ for /f %%a in ('copy /Z "%~dpf0" nul') do set "BS=%%a"
 
 :Main
 Set /P "_FileName=Type FileName to Generate:"
-Set /P "_Lang=Programming Language (Bat, Py, C, ahk): (only Bat Supported yet)"
+If Not Defined _FileName (Goto :Main)
+Set /P "_Lang=Programming Language (Bat, C): "
+If Not Defined _Lang (Goto :Main)
 Set /P "_Author=Author of Project:"
 Set /P "_ProjectPath=Location of Project (e.g: D:\Projects):"
-If Not Defined _FileName (Goto :Main)
-If Not Defined _Lang (Goto :Main)
+
 Echo. Creating File...
 Echo. The Process of File Generation might be Slow in Win 10, Because of Defender.
 Start /b Call FnC "%_FileName%" "%_Lang%" "%_Author%" "%_ProjectPath%"
