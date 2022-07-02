@@ -26,4 +26,6 @@ Where:-
  So, jump start your awesome scripts.
 
  Article- https://batch-man.com/batch-template-generator-fnc/  
+ Video- https://www.youtube.com/watch?v=_juNUeBS0m4&ab_channel=BatchMan
+ 
  #batch-man
